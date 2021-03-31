@@ -1,5 +1,6 @@
 # Research Track I - first assignment
-
+Koushikmani Maskalmatti Lakshman
+Matricola: 5053566
 The assignment requires controlling a holonomic robot in a 2d space with a simple 2d simulator, Stage. 
 The simulator can be launched by executing the command:
 
