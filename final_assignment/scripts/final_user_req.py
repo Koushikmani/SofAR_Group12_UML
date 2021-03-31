@@ -33,11 +33,11 @@ def main():
     rate = rospy.Rate(20)
     while not rospy.is_shutdown():
 
-        print("""\nEnter integers from 1 to 4 to execute the following behaviors:
-(1) Move randomly in the environment, by choosing 1 out of 6 possible target positions.
-(2) Enter the next target position out of the possible six and reach it.
-(3) Start following the external walls.
-(4) Stop in the last position.""")
+        print("""\nEnter integers from 1 to 4:
+(1) Move randomly in the environment, by choosing 1 out of 6 possible  positions.
+(2) Enter  next target position out of the possible six
+(3) Start follow  external walls.
+(4) Stop in the last .""")
 
         x = int(raw_input("\nEnter a number from 1 to 4 corresponding to the chosen robot behavior: "))
 
