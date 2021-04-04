@@ -1,3 +1,4 @@
+
 # Research Track I - first assignment
 Koushikmani Maskalmatti Lakshman
 Matricola: 5053566
@@ -29,5 +30,5 @@ rosrun stage_ros stageros $(rospack find assignment1)/world/exercise.world
 - The position of the robot is given in the topic **odom**, by using a **nav_msgs/Odometry** (Odometry message defined in the package nav_msgs) message. This means that the x and y position of the robot may be retrieved by reading the pose.pose.position.x and pose.pose.position.y fields of the message received by the callback associated with the subscriber.
 - For the robot control, at first, check if the position has been reached. If yes, you should call the service to retrieve the new target position. If not, you should set **cmd_vel** (a **geometry_msgs/Twist** message) depending on the difference between the target (xt) and the robot position (x) (e.g., vel_x = k* (xt - x))
 
-
+![rosgraph](https://user-images.githubusercontent.com/81651764/113522842-5db7f480-9593-11eb-8654-612cd6c20395.png)
 
