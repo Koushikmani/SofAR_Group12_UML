@@ -13,7 +13,6 @@ geometry_msgs::Twist vel;                    //to get the current position of th
 
 void positionCallback(const nav_msgs::Odometry::ConstPtr&msg)//odometry: estimation of posi& vel robo
 {
-{
      ROS_INFO("Robot position [%f, %f]", msg->pose.pose.position.x, msg->pose.pose.position.y);
      float x=msg->pose.pose.position.x;  //to declare X & Y
      float y=msg->pose.pose.position.y;
