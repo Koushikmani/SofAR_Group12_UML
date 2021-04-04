@@ -29,18 +29,5 @@ rosrun stage_ros stageros $(rospack find assignment1)/world/exercise.world
 - The position of the robot is given in the topic **odom**, by using a **nav_msgs/Odometry** (Odometry message defined in the package nav_msgs) message. This means that the x and y position of the robot may be retrieved by reading the pose.pose.position.x and pose.pose.position.y fields of the message received by the callback associated with the subscriber.
 - For the robot control, at first, check if the position has been reached. If yes, you should call the service to retrieve the new target position. If not, you should set **cmd_vel** (a **geometry_msgs/Twist** message) depending on the difference between the target (xt) and the robot position (x) (e.g., vel_x = k* (xt - x))
 
-### How to submit the assignment:
-- The link of a github repository containing the developed ROS package should be given;
-- The repo should have a README.md file with:
-	- Description of the content of the package (nodes, custom messages or services (if any)).
-	- Computational graph of the system (how do nodes communicate? You may use rqt_graph).
-	- Instructions about how to run the code.
-- Functions and source files should be documented (optional: you can create a docs folder with DoxyGen documentation).
-
-### Deadline
-A soft deadline is set to the 25th November and the next Research Track class will be on November 26th.  This means that:
-- You can actually submit your assignment at any time, however 10 days before the oral discussion.
-- I strongly advise you to start working on the assignment in the next weeks. Indeed, in the last 9 hours of the course, we are going to work on more complex robotic simulations, which require a good knowledge of ROS. Doing the assignment will be a good way to understand what it is still unclear and catch up with the course.
-- In the next two weeks, you can contact me even outside class hours for clarifications about the assignment and the course subjects in general.
 
 
