@@ -1,4 +1,4 @@
-  #! /usr/bin/env python
+#! /usr/bin/env python
 # importing ros stuffs
 import rospy
 from std_srvs.srv import *
