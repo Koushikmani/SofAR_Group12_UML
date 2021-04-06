@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python                                                          #import packages
 # importing ros stuffs
 import rospy
 from std_srvs.srv import *
@@ -10,34 +10,34 @@ from actionlib_msgs.msg import GoalStatusArray
 from my_srv.srv import Finalassignment
 target_reached_status = 0
 def clbk_move_base_status(msg):
-    global target_reached_status
+    global target_reached_status                                      #to declare it as global
     if (len(msg.status_list) > 0):
         if msg.status_list[0].status == 3:
 	    target_reached_status = 1
-def main():
+def main():                                               #to initilize the user req node
     rospy.init_node('final_user_req')                               
     global target_reached_status, wall_follower_client
-random_index_service = rospy.ServiceProxy('/finalassignment', Finalassignment)
+random_index_service = rospy.ServiceProxy('/finalassignment', Finalassignment)       #msgs and inputs
     move_base_status = rospy.Subscriber('/move_base/status', GoalStatusArray, clbk_move_base_status, queue_size = 1)
     new_target_pub = rospy.Publisher('/move_base/goal', MoveBaseActionGoal, queue_size = 1)
     wall_follower_client = rospy.ServiceProxy('/wall_follower_switch', SetBool)
     pub = rospy.Publisher('/cmd_vel', Twist, queue_size = 1)
-random_targets = [(-4,-3), (-4,2), (-4,7), (5,-7), (5,-3), (5,1)]
-print("\nStarting...\n")
+random_targets = [(-4,-3), (-4,2), (-4,7), (5,-7), (5,-3), (5,1)]     #given coordinates or targets
+print("\nStarting...\n")                                               #command to start   
 rate = rospy.Rate(20)
 while not rospy.is_shutdown():
 print("""\nInput option integer from 1 to 4:
 |1| To move random in the environment with given values
 |2| Robot should move as the input target position
 |3| Robot will follow the walls
-|4| To Stop at last position
+|4| To Stop at last position                                       #inputs(4 options)
 x = int(raw_input("\nEnter a number from 1 to 4 corresponding to the chosen robot behavior: "))
 if (x == 1):
-resp = wall_follower_client(False)
+resp = wall_follower_client(False)                                  #wall follower service off command  
 resp = random_index_service(1,6)
 rand_index = resp.target_index
 print("\nNew position Target: (" + str(random_targets[rand_index -1][0]) + ", " + str(random_targets[rand_index -1][1]) + ")")
-MoveBase_msg = MoveBaseActionGoal()
+MoveBase_msg = MoveBaseActionGoal()                                  #msgs given to the robot  
 MoveBase_msg.goal.target_pose.header.frame_id = "map"
 MoveBase_msg.goal.target_pose.pose.orientation.w = 1
 MoveBase_msg.goal.target_pose.pose.position.x = random_targets[rand_index -1][0]
